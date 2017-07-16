@@ -39,7 +39,7 @@ function createContainer(w, h, el, altText, opts) {
     'width:' + playSize + 'px',
     'height:' + playSize + 'px',
     'border-radius:' + (playSize/2) + 'px',
-    'background:rgba(0, 0, 0, 0.3)',
+    'background:rgba(255, 255, 255, 0.6)',
     'position:absolute',
     'top:50%',
     'left:50%',
