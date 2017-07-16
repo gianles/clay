@@ -14,7 +14,7 @@ var playSize = 60;
 var Gifffer = function(options) {
   var images, i = 0, gifs = [];
 
-  images = d.querySelectorAll('[src]');
+  images = d.querySelectorAll('[data-gifffer]');
   for(; i<images.length; ++i) process(images[i], gifs, options);
   // returns each gif container to be usable programmatically
   return gifs;
@@ -50,7 +50,7 @@ function createContainer(w, h, el, altText, opts) {
     'height: 0',
     'border-top: 14px solid transparent',
     'border-bottom: 14px solid transparent',
-    'border-left: 14px solid rgba(0, 0, 0, 0.5)',
+    'border-left: 14px solid rgba(255, 255, 255, 0.5)',
     'position: absolute',
     'left: 26px',
     'top: 16px'
@@ -106,11 +106,11 @@ function calculatePercentageDim (el, w, h, wOrig, hOrig) {
 function process(el, gifs, options) {
   var url, con, c, w, h, duration,play, gif, playing = false, cc, isC, durationTimeout, dims, altText;
 
-  url = el.getAttribute('src');
-  w = el.getAttribute('src-width');
-  h = el.getAttribute('src-height');
-  duration = el.getAttribute('src-duration');
-  altText = el.getAttribute('src-alt');
+  url = el.getAttribute('data-gifffer');
+  w = el.getAttribute('data-gifffer-width');
+  h = el.getAttribute('data-gifffer-height');
+  duration = el.getAttribute('data-gifffer-duration');
+  altText = el.getAttribute('data-gifffer-alt');
   el.style.display = 'block';
 
   // creating the canvas
