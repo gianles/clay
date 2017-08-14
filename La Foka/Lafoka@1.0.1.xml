@@ -572,12 +572,14 @@ article .content img{
 display:block;
 margin: 0 auto;
 }
+article .content img:first-child {
+display: none;
+}
 article .content{
 font-size:1.41rem;
 line-height:1.8rem;
 color:rgba(0,0,0,0.7);
 text-align: justify;
-
 }
 .post{
 background:#fff;
@@ -592,6 +594,9 @@ font-weight:600;
 text-align:left;
 }
 article .content{
+padding:2.1rem;
+}
+article .contento{
 padding:2.1rem;
 }
 /*aside*/
@@ -1229,7 +1234,7 @@ body#layout .right {float: right;width: 50%;}
 
 <div class='post'>
 
- <div class='content'>
+ <div class='contento'>
   <h2 class='title'><span><fb:comments-count expr:href='data:post.canonicalUrl'/> Comentarios</span></h2>
 <div id='fb-root'/>
 <div class='fb-comments' data-colorscheme='light' data-num-posts='5' data-width='100%' expr:href='data:post.canonicalUrl'/>
@@ -1256,7 +1261,7 @@ body#layout .right {float: right;width: 50%;}
 
 <div class='post'>
 
- <div class='content'>
+ <div class='contento'>
   <h2 class='title'><span>Recomendado</span></h2>
 
 <b:include cond='data:view.url != data:blog.homepageUrl' name='relacionados'/>
@@ -1365,7 +1370,7 @@ body#layout .right {float: right;width: 50%;}
 <footer>
 <div class='container clearfix'>
   Derechos Reservados &#169; <data:blog.title/> Network 2017.
-  <p style="display:block;padding-top:.4rem;font-size:.8rem;">Design by <a href="http://www.bygian.com/">ByGian</a></p>
+  <p style='display:block;padding-top:.4rem;font-size:.8rem;'>Design by <a href='http://www.bygian.com/'>ByGian</a></p>
 </div>
   </footer>
 </div>
