@@ -1028,6 +1028,7 @@ top:1.3px;
   text-transform:uppercase;
   display: block;
   font-size:1.13rem;
+  color:#000;
 }
 .load_data_resumen {
   line-height: 1.45rem;
@@ -1122,8 +1123,10 @@ color:#fff;
 /*footer*/
 footer{
 background:#333333;
-padding:1.6rem;
+padding:3rem;
 text-align:center;
+position:relative;
+z-index:75;
 }
 .creditos{
 color:rgba(255,255,255,0.46);
@@ -1170,6 +1173,7 @@ font-size:1.15rem;
 color:#444444;
 line-height:25px;
 }
+ .Redes2 {display:none;}
 #ContactForm1{
 display:none;
 }
@@ -1344,7 +1348,7 @@ top:0;
 right:0;
 left:0;
 width:100%;
-z-index:40000;
+z-index:70;
 background: #75c241
 }
 .logotipo{
@@ -1403,6 +1407,7 @@ display:none;
 }
 /* Large devices */
 @media (min-width: 992px) {
+ .Redes2 {display:block;}
 .load{width: 33.33%;}
 .flapi.icon-search{
 display:inline-block;
@@ -1474,7 +1479,7 @@ font-family: 'Lobster', cursive;
 position:fixed;
 top: 45px; width: 320px;
 background:#fff;
-height:790px;
+height:800px;
 }
   .blog{
     float:left;
@@ -1592,6 +1597,38 @@ top:-2px;font-weight:300;
   background-color: #ff6b2a;
 	color:#fff;
 }
+
+.red-c{
+width:100%;
+}
+.red-c a{
+text-align:center;
+width:100%;
+display:block;
+font-size:1.5rem;
+text-decoration:none;
+color:#fff;
+}
+
+.red-c a.selva{
+background:#75c241;
+}
+.red-c a.fb{
+background:#3A5795;
+}
+.red-c a.twitt{
+background:#5EA9DD;
+}
+.red-c a i{
+display:block;
+vertical-align:middle;
+font-size:1.8rem;
+}
+.red-c a p.cambio{
+text-transform:uppercase;
+font-size:1.2rem;
+}
+
 </style>
 <b:skin><![CDATA[
 /*!
@@ -1708,7 +1745,7 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
 </header>
 
 <div class='global container clearfix'>
-<b:section class='publicidad 2' cond='data:view.isMultipleItems' id='publicidad 2' showaddelement='no'>
+<b:section class='publicidad del inicio y index' cond='data:view.isMultipleItems' id='publicidad 2' showaddelement='no'>
   <b:widget id='HTML20' locked='true' title='' type='HTML' version='1'>
     <b:widget-settings>
       <b:widget-setting name='content'>&lt;script async=&#39;async&#39; src=&#39;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&#39;&gt;&lt;/script&gt;
@@ -1726,6 +1763,37 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
 </b:includable>
   </b:widget>
 </b:section>
+
+
+  <b:section class='Redes2' id='Publicidad y Redes grande' showaddelement='no'>
+    <b:widget id='HTML1' locked='false' title='redes' type='HTML' version='1'>
+      <b:widget-settings>
+        <b:widget-setting name='content'>&lt;div class=&quot;flex justify-content-between&quot;&gt;&lt;script async src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+&lt;!-- grande2 --&gt;
+&lt;ins class=&quot;adsbygoogle&quot;
+     style=&quot;display:inline-block;width:970px;height:250px&quot;
+     data-ad-client=&quot;ca-pub-8867960700770981&quot;
+     data-ad-slot=&quot;7291031463&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+
+&lt;div class=&quot;red-c flex wrap&quot;&gt;
+&lt;a href=&quot;/&quot; class=&quot;selva&quot; target=&#39;_blank&#39;&gt;&lt;p style=&quot;position:relative;top:30%;font-family:&#39;Lobster&#39;, cursive;;&quot;&gt;Selva Noticias&lt;/p&gt;&lt;/a&gt;
+&lt;a href=&quot;https://www.facebook.com/SoyPucallpino/&quot; class=&quot;fb&quot; target=&#39;_blank&#39;&gt;&lt;span style=&quot;position:relative;top:18%;display:block;&quot;&gt;&lt;i class=&quot;icon-facebook&quot;&gt;&lt;/i&gt;&lt;p class=&quot;cambio&quot;&gt;facebook&lt;/p&gt;&lt;/span&gt;&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;twitt&quot; target=&#39;_blank&#39;&gt;&lt;span style=&quot;position:relative;top:18%;display:block;&quot;&gt;&lt;i class=&quot;icon-twitter&quot;&gt;&lt;/i&gt;&lt;p class=&quot;cambio&quot;&gt;twitter&lt;/p&gt;&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</b:widget-setting>
+      </b:widget-settings>
+      <b:includable id='main'>
+<b:if cond='data:view.isPost'>
+  <!-- only display title if it's non-empty -->
+    <data:content/>
+      </b:if>
+  <b:include name='quickedit'/>
+</b:includable>
+    </b:widget>
+  </b:section>
 
   <div class='main clearfix'>
     <div class='blog'>
@@ -1915,7 +1983,7 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
     </div>
           </a>
           <div class='load_data'>
-            <span class='load_data_title'><data:post.title/></span>
+           <a expr:href='data:post.url'><span class='load_data_title'><data:post.title/></span></a>
             <!--<p class='load_data_resumen'><data:post.snippet/></p>-->
             <a class='load_data_read' expr:href='data:post.url'/>
           </div>
@@ -1951,32 +2019,29 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
           <h1 class='title'><data:post.title/></h1>
 
           <div class='post-content'>
-            <div expr:id='"aim1" + data:post.id'></div>
+            <div expr:id='&quot;aim1&quot; + data:post.id'/>
 
-<div style="clear:both; margin:1.1rem auto;">
+<div style='clear:both; margin:1.1rem auto;'>
 <center>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- slider -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-8867960700770981"
-     data-ad-slot="3879697233"></ins>
+<script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
+<!-- lateral1 -->
+<ins class='adsbygoogle' data-ad-client='ca-pub-8867960700770981' data-ad-slot='2181501593' style='display:inline-block;width:300px;height:600px'/>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
   </center>
 </div>
 
-<div expr:id='"aim2" + data:post.id'>
+<div expr:id='&quot;aim2&quot; + data:post.id'>
 <data:post.body/>
 </div>
 
-<script type="text/javascript">
-var obj0=document.getElementById("aim1<data:post.id/>");
-var obj1=document.getElementById("aim2<data:post.id/>");
+<script type='text/javascript'>
+var obj0=document.getElementById(&quot;aim1<data:post.id/>&quot;);
+var obj1=document.getElementById(&quot;aim2<data:post.id/>&quot;);
 var s=obj1.innerHTML;
 var r=s.search(/\x3C!-- adsense --\x3E/igm);
-if(r>0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
+if(r&gt;0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
 </script>
 
 
@@ -2138,7 +2203,7 @@ if(r>0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
 <b:section id='sidebar'>
   <b:widget id='PopularPosts20' locked='false' title='Entradas populares' type='PopularPosts' version='1'>
     <b:widget-settings>
-      <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
+      <b:widget-setting name='numItemsToShow'>1</b:widget-setting>
       <b:widget-setting name='showThumbnails'>true</b:widget-setting>
       <b:widget-setting name='showSnippets'>true</b:widget-setting>
       <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
@@ -2148,31 +2213,16 @@ if(r>0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
 		<div class='widget-content'>
 		<b:if cond='data:posts.length != 0'>
         <div class='tops' style='margin-top:.4rem;'>
-			<b:loop values='data:posts' var='post'>
-          <div class='top'>
-			<a class='top_image' expr:href='data:post.href'>
-				<b:if cond='data:showThumbnails'>
-					<b:if cond='data:post.thumbnail'>
-						<img expr:alt='data:post.title' expr:src='resizeImage(data:post.thumbnail,400,&quot;10:4&quot;)'/>
-					<b:else/>
-						<img expr:alt='data:post.title' src='https://4.bp.blogspot.com/-S82veBwr6GY/WGXba_QzE1I/AAAAAAAACBI/jV5d4YA4iTEbo8xZiZ6l4D8Fcw9ecMVrgCLcB/w40-h40-c/no-image-blogger.png'/>
-					</b:if>
-				</b:if>
-			</a>
-              <div class='top_data'>
-				<span class='top_data_title'><data:post.title/></span>
-              </div>
-		</div>
-			</b:loop>
+			
 		</div>
 		<b:else/>
           <p class='info'>No hay entradas destacadas TT-TT</p>
 		</b:if>
 		</div>
 
-<div class='publicooon' style='padding:0 0 0;height:250px;overflow:hidden;'>
+<div class='publicooon' style='padding:0 2rem 0;height:auto;overflow:hidden;'>
 <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
-<ins class='adsbygoogle' data-ad-client='ca-pub-8867960700770981' data-ad-format='auto' data-ad-slot='9386648128' style='display:block'/>
+<ins class='adsbygoogle' data-ad-client='ca-pub-8867960700770981' data-ad-format='auto' data-ad-slot='9386648128' style='display:block;'/>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
