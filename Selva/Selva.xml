@@ -691,8 +691,15 @@ body{ /*start styles*/
   background: rgba(0, 0, 0, 0.02) /*color fondo*/;
   font-family: RobotoDraft;
 }
-.mott {
-    font-size: 2rem;
+.no-entrys{
+    font-size: 1.1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    display: block;
+    color: rgba(0,0,0,0.5);width:100%;
+}
+.mott{
+    font-size: 1.6rem;
     display: inline-block;
     line-height: initial;
     color: rgba(0, 0, 0, 0.5);
@@ -1701,7 +1708,7 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
  </div>
 
 
-  <b:section class='aside22' id='sideba2r'>
+  <b:section class='Menu' id='Menu'>
     <b:widget id='Label10' locked='false' title='Categoría' type='Label' version='1'>
       <b:widget-settings>
         <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
@@ -1839,9 +1846,15 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
 </span>
       </h3>
     <div class='items flex wrap'>
-      <b:loop index='postNum' values='data:posts' var='post'><!-- bucle posts -->
-         <b:include data='post' name='post'/><!-- insertamos entradas -->
-      </b:loop>
+      		<b:if cond='data:numPosts == 0'>
+			<div class='no-entrys'>
+			<p><b:if cond='data:blog.searchQuery'>No hay entradas con esos términos de búsqueda<br/><span class='mott'>&#12304;&#9679;Ξ&#9679;&#12305; </span><b:else/>Este blog aún no tiene entradas<br/><span class='mott'> &#180;&#9685;&#65077;&#9685;` </span></b:if></p>
+			</div>
+		<b:else/>
+         <b:loop index='postNum' values='data:posts' var='post'>
+            <b:include data='post' name='post'/><!-- insertamos entradas -->
+         </b:loop>
+      </b:if>
   </div>
       <b:include name='nextprev'/><!-- paginacion estandar -->
    <b:else/>
@@ -1851,6 +1864,12 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
             <b:include data='post' expr:name='data:view.isPreview ? &quot;comment_status&quot; : (data:post.allowComments ? &quot;comment-&quot; + data:commentsType[0] : &quot;comment_status&quot;)'/>
             <noscript><p class='info'>Los comentarios requieren javascript</p></noscript>
          <!-- fin comentarios -->
+
+
+        <h3 class='title'><span>Recomendados</span></h3>
+
+
+<b:include cond='data:view.url != data:blog.homepageUrl' name='relacionados'/>
       </b:loop>
    </b:if>
    
@@ -1971,13 +1990,16 @@ var relacionados={posts:[],max:6,maxLen:100,imgPorDefecto:"https://4.bp.blogspot
                               </b:if>
             <span class='load_time'><i class='icon-back-in-time'/><p><data:post.date/></p></span>
 
-<!-- Condicion Lambda -->
-<b:loop values='data:post.labels first (tag =&gt; tag.name in {&quot;Espectaculo&quot;,&quot;Deporte&quot;,&quot;Sucesos&quot;,&quot;Pucallpa&quot;,&quot;Loreto&quot;,&quot;Tarapato&quot;,&quot;Trujillo&quot;,&quot;Sungaro&quot;,&quot;San Martin&quot;})' var='label'>
-  <span expr:class='&quot;firstag-name firstag-name--&quot; + data:label.name'><i expr:class='&quot;icon-&quot; + data:label.name'/><data:label.name/></span>
-</b:loop>
+    <b:loop index='i' values='data:post.labels' var='label'>
+        <b:if cond='data:i == 0'>
+             <span expr:class='&quot;firstag-name firstag-name--&quot; + data:label.name'><i expr:class='&quot;icon-&quot; + data:label.name'/><data:label.name/></span>
+        
+        </b:if>
+    </b:loop>
+
 
 <div class='tagsi'>
-<b:loop values='data:post.labels first (tag =&gt; tag.name in {&quot;Nacional&quot;,&quot;Internacional&quot;})' var='label'>
+<b:loop values='data:post.labels first (tag =&gt; tag.name in {&quot;Nacional&quot;,&quot;Internacional&quot;,&quot;Sucesos&quot;})' var='label'>
    <span expr:class='&quot;circulo circulo-&quot; + data:label.name + &quot; icon-&quot; + data:label.name' expr:title='data:label.name'/>
 </b:loop>
     </div>
@@ -2088,11 +2110,6 @@ if(r&gt;0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
             </div>
           </article>
 
-        <h3 class='title'><span>Recomendados</span></h3>
-
-
-<b:include cond='data:view.url != data:blog.homepageUrl' name='relacionados'/>
-
       <!--{{ Entradas }}-->
 
       <b:elseif cond='data:view.isPage'/>
@@ -2153,6 +2170,26 @@ if(r&gt;0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
    </b:includable>
     <b:includable id='threaded_comments' var='post'><!--none--></b:includable>
   </b:widget>
+  <b:widget id='HTML2' locked='false' title='Publicidad debajo de recomendados' type='HTML' version='1'>
+    <b:widget-settings>
+      <b:widget-setting name='content'>&lt;center&gt;
+&lt;div class=&#39;publicooon2 clearfix&#39;&gt;
+&lt;script async=&#39;async&#39; src=&#39;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&#39;&gt;&lt;/script&gt;
+&lt;ins class=&#39;adsbygoogle&#39; data-ad-client=&#39;ca-pub-8867960700770981&#39; data-ad-format=&#39;auto&#39; data-ad-slot=&#39;9386648128&#39; style=&#39;display:block;&#39;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;/center&gt;</b:widget-setting>
+    </b:widget-settings>
+    <b:includable id='main'>
+<b:if cond='data:view.isPost'>
+    <data:content/>
+</b:if>
+
+  <b:include name='quickedit'/>
+</b:includable>
+  </b:widget>
   <b:widget cond='data:view.isPage' id='ContactForm1' locked='false' title='Formulario de contacto' type='ContactForm'>
     <b:includable id='main'>
   <b:if cond='data:title != &quot;&quot;'>
@@ -2210,15 +2247,7 @@ if(r&gt;0) {obj0.innerHTML=s.substr(0,r);obj1.innerHTML=s.substr(r+16);}
     </b:widget-settings>
     <b:includable id='main'>
 		<h2><span>recomendados</span></h2>
-		<div class='widget-content'>
-		<b:if cond='data:posts.length != 0'>
-        <div class='tops' style='margin-top:.4rem;'>
-			
-		</div>
-		<b:else/>
-          <p class='info'>No hay entradas destacadas TT-TT</p>
-		</b:if>
-		</div>
+
 
 <div class='publicooon' style='padding:0 2rem 0;height:auto;overflow:hidden;'>
 <script async='async' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'/>
